@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Películas</title>
+</head>
+<body>
+        <h1>Listado Películas</h1>
+    <% for(let i=0; i < peliculas.length; i++) { %>
+        <a href= "/movies/detail/<%= peliculas[i].id %>" ><h3><%= peliculas[i].title %></h3></a>
+     <% } %>
+
+</body>
+</html>

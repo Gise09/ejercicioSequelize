@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recomendadas</title>
+</head>
+<body>
+        <h1>Recomendadas</h1>
+
+    <% for(let i=0; i < recom.length; i++) { %>
+        <a href= "/movies/detail/<%= recom[i].id %>"><h3><%= recom[i].title %></h3></a>
+
+                
+    <% } %>    
+
+</body>
+</html>

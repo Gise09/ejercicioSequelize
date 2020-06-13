@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle Película</title>
+</head>
+<body>
+        <h1><%= pelicula.title %></h1>
+
+        <h3>Fecha de estreno: <%= pelicula.release_date %> </h3>
+        
+        <% if( pelicula.length != null ) { %>
+        <h3>Duración: <%= pelicula.length %> </h3>
+        <% } %>
+
+        <h3>Premios: <%= pelicula.awards %> </h3>
+        
+        <% if( pelicula.revenue != 0 ) { %>
+        <h3>Igresos: <%= pelicula.revenue %> </h3>
+        <% } %>
+   
+
+</body>
+</html>

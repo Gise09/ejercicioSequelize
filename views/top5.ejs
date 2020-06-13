@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top 5</title>
+</head>
+<body>
+        <h1>TOP 5</h1>
+
+    <% for(let i=0; i < top.length; i++) { %>
+        <a href= "/movies/detail/<%= top[i].id %>"><h3><%= top[i].title %></h3></a>
+
+                
+    <% } %>    
+
+</body>
+</html>
