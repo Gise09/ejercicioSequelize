@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Editar Película </title>
+</head>
+<body>
+    <h1>Editar Película</h1>
+
+    <form action="/movies/edit/<%= pelicula.id %>" method="POST">
+    <div>
+        <label for="">Título:</label>
+        <input type="text" name="title" value="<%= pelicula.title %>">
+    </div>
+    <div>
+        <label for="">Premios:</label>
+        <input type="text" name="awards" value="<%= pelicula.awards %>">
+    </div>
+    <div>
+        <label for="">Duración:</label>
+        <input type="text" name="length" value="<%= pelicula.length %>">
+    </div>
+    <div>
+        <label for="">Fecha de estreno:</label>
+        <input type="date" name="release_date" value="<%= pelicula.release_date %>">
+    </div>
+    
+<div>
+    <label for="">Genero:</label>
+    <select name="genre" >
+        <% for (let i=0; i < generos.length; i++) { %>
+            <option value="<%= generos[i].id %>">
+            <%= generos[i].name %>
+            </option>
+        <% } %>
+    </select>
+</div>
+
+    <button type="submit"> Editar </button>
+    
+    </form>
+</body>
+</html>

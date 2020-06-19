@@ -1,59 +1,60 @@
-const { UnavailableForLegalReasons } = require("http-errors");
-
 module.exports = (sequelize, DataTypes) => {
     let alias = "Pelicula";
     let cols = {
         id : {
             type: DataTypes.INTEGER.UNSIGNED,
             primaryKey: true,
-            null: false,
             autoIncrement: true
         },
         title : {
-            type: DataTypes.STRING(500),
-            null: false
+            type: DataTypes.STRING(500)
         },
         director_id : {
-            type: DataTypes.INTEGER.UNSIGNED,
-            null: true            
+            type: DataTypes.INTEGER.UNSIGNED
         },
         awards : {
-            type: DataTypes.INTEGER.UNSIGNED,
-            null: false,
-            /*defaultValue: 0*/
+            type: DataTypes.INTEGER.UNSIGNED
         },
         revenue : {
-            type: DataTypes.STRING(255),
-            null: false
+            type: DataTypes.STRING(255)
         },
         release_date : {
-            type: DataTypes.DATE,
-            null: false
+            type: DataTypes.DATE
         },
         length : {
-            type: DataTypes.INTEGER.UNSIGNED,
-            null: true
+            type: DataTypes.INTEGER.UNSIGNED
         },
         genre_id : {
-            type: DataTypes.INTEGER.UNSIGNED,
-            null: true
+            type: DataTypes.INTEGER.UNSIGNED
         },
-        created_at : {
+        createdAt : {
             type: DataTypes.DATE,
-            null: true,
-            field: 'created_at'
+            field: 'createdAt'
         },
-        updated_at : {
+        updatedAt : {
             type: DataTypes.DATE,
-            null: true,
-            field: 'updated_at',
+            field: 'updatedAt'
         }
     }
     let config = {
-        tableName : "movies",
-        timestamps : false
+        tableName : "movies"
     };
 
     const Pelicula = sequelize.define(alias, cols, config);
-    return Pelicula
+
+    Pelicula.associate = function(models){
+        Pelicula.belongsTo(models.Genero, {
+            as: "genero",
+            foreignKey: "genre_id"
+        });
+
+        Pelicula.belongsToMany(models.Actor, {
+            as: "actores",
+            through: "actor_movie",
+            foreignKey: "movie_id",
+            otherKey: "actor_id"
+        });
+    }
+
+    return Pelicula;
 }

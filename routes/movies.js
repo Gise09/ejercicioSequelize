@@ -18,4 +18,15 @@ router.get('/recommended' , peliculaController.recommended);
 router.get('/search' , peliculaController.search);
 router.post('/search' , peliculaController.searchPost);
 
+/* /movies/crear */
+router.get('/crear' , peliculaController.crear);
+router.post('/crear' , peliculaController.guardar);
+
+/* /movies/edit */
+router.get('/edit/:id' , peliculaController.edit);
+router.post('/edit/:id' , peliculaController.update);
+
+/* /movies/delete */ 
+router.post('/delete/:id' , peliculaController.delete);
+
 module.exports = router;

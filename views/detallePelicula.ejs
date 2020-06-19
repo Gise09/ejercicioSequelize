@@ -8,7 +8,7 @@
 <body>
         <h1><%= pelicula.title %></h1>
 
-        <h3>Fecha de estreno: <%= pelicula.release_date %> </h3>
+        <h3>Fecha de estreno: <%= pelicula.release_date_formatted %> </h3>
         
         <% if( pelicula.length != null ) { %>
         <h3>Duración: <%= pelicula.length %> </h3>
@@ -19,7 +19,30 @@
         <% if( pelicula.revenue != 0 ) { %>
         <h3>Igresos: <%= pelicula.revenue %> </h3>
         <% } %>
-   
+
+        <% if( pelicula.genero != null ) { %>
+        <h3>Genero: <%= pelicula.genero.name %> </h3>
+        <% } %>
+
+        <% if( pelicula.actores != 0 ) { %>
+        <h3>Actores:</h3> 
+        <ul>
+            <% for (let i=0; i < pelicula.actores.length; i++) { %>
+            <li>
+                <%= pelicula.actores[i].first_name %> <%= pelicula.actores[i].last_name %>
+            </li>
+            <% } %>
+        <% } %>    
+        </ul>
+
+        <a href="/movies/edit/<%= pelicula.id %>">
+        <button> Modificar </button>
+        </a>
+
+        <form action="/movies/delete/<%= pelicula.id %>" method="POST">
+        <button type="submit"> Borrar </button>
+        </form>
+            
 
 </body>
 </html>

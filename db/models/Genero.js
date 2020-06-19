@@ -4,30 +4,24 @@ module.exports = (sequelize, DataTypes) => {
         id : {
             type: DataTypes.INTEGER.UNSIGNED,
             primaryKey: true,
-            null: false,
             autoIncrement: true
         },
         name : {
             type: DataTypes.STRING(100),
-            null: false
         },
         ranking : {
-            type: DataTypes.INTEGER.UNSIGNED,
-            null: false,
+            type: DataTypes.INTEGER.UNSIGNED
         },
         active : {
-            type: DataTypes.INTEGER,
-            null: false
+            type: DataTypes.INTEGER
         },
-        created_at : {
+        createdAt : {
             type: DataTypes.DATE,
-            null: true,
-            field: 'created_at'
+            field: 'createdAt'
         },
-        updated_at : {
+        updatedAt : {
             type: DataTypes.DATE,
-            null: true,
-            field: 'updated_at'
+            field: 'updatedAt'
         }
     }
     let config = {
@@ -35,6 +29,13 @@ module.exports = (sequelize, DataTypes) => {
     };
 
     const Genero = sequelize.define(alias, cols, config);
-    return Genero
+
+    Genero.associate = function (models) {
+        Genero.hasMany(models.Pelicula, {
+            as: "peliculas",
+            foreignKey: "genre_id"
+        });
+    }
+    return Genero;
 }
 

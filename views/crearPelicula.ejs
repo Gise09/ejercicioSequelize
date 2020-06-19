@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Crear Película</h1>
+
+    <form action="/movies/crear" method="POST">
+    <div>
+        <label for="">Título:</label>
+        <input type="text" name="title">
+    </div>
+    <div>
+        <label for="">Premios:</label>
+        <input type="text" name="awards">
+    </div>
+    <div>
+        <label for="">Duración:</label>
+        <input type="text" name="length">
+    </div>
+    <div>
+        <label for="">Fecha de estreno:</label>
+        <input type="date" name="release_date">
+    </div>
+    <div>
+        <label for="">Genero:</label>
+        <select name="genre" >
+            <% for (let i=0; i < generos.length; i++) { %>
+            <option value="<%= generos[i].id %>">
+                <%= generos[i].name %>
+            </option>
+            <% } %>
+        </select>
+    </div>
+
+    <button type="submit"> Crear </button>
+    
+    </form>
+</body>
+</html>

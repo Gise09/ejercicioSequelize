@@ -4,34 +4,27 @@ module.exports = (sequelize, DataTypes) => {
         id : {
             type: DataTypes.INTEGER.UNSIGNED,
             primaryKey: true,
-            null: false,
             autoIncrement: true
         },
         first_name : {
-            type: DataTypes.STRING(100),
-            null: false
+            type: DataTypes.STRING(100)
         },
         last_name : {
-            type: DataTypes.STRING(100),
-            null: false
+            type: DataTypes.STRING(100)
         },
         rating : {
-            type: DataTypes.DECIMAL(3.1).UNSIGNED,
-            null: true
+            type: DataTypes.DECIMAL(3.1).UNSIGNED
         },
         favorite_movie_id : {
-            type: DataTypes.INTEGER.UNSIGNED,
-            null: true
+            type: DataTypes.INTEGER.UNSIGNED
         },
-        created_at : {
+        createdAt : {
             type: DataTypes.DATE,
-            null: true,
-            field: 'created_at'
+            field: 'createdAt'
         },
-        updated_at : {
+        updatedAt : {
             type: DataTypes.DATE,
-            null: true,
-            field: 'updated_at'
+            field: 'updatedAt'
         }
     }
     let config = {
@@ -39,5 +32,16 @@ module.exports = (sequelize, DataTypes) => {
     };
 
     const Actor = sequelize.define(alias, cols, config);
+
+    Actor.associate = function(models) {
+        Actor.belongsToMany(models.Pelicula, {
+            as: "peliculas",
+            through: "actor_movie",
+            foreignKey: "actor_id",
+            otherKey: "movie_id"
+        });
+    }
+
+
     return Actor
 }
