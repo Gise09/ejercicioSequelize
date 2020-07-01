@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Detalle Género </title>
+</head>
+<body>
+
+    <h1>Género</h1>
+
+    <h3>Nombre: <%= genero.name %> </h3>
+    <h3>Peliculas:</h3> 
+        <ul>
+            <% for (let i=0; i < genero.peliculas.length; i++) { %>
+                
+            <li>
+                <%= genero.peliculas[i].title %>
+            </li>
+            <% } %>
+        </ul>
+    
+</body>
+</html>

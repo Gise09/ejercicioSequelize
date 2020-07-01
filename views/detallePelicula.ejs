@@ -21,7 +21,8 @@
         <% } %>
 
         <% if( pelicula.genero != null ) { %>
-        <h3>Genero: <%= pelicula.genero.name %> </h3>
+        <h3>Genero: 
+            <a href="/movies/genre_detail/<%= pelicula.id %>"><%= pelicula.genero.name %></a> </h3>
         <% } %>
 
         <% if( pelicula.actores != 0 ) { %>

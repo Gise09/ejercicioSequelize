@@ -80,6 +80,7 @@ let peliculaController = {
         .then(function(generos) {
             return res.render("crearPelicula", {generos});
         })
+
     },
 
     guardar: function(req, res) {
